@@ -17,18 +17,12 @@ const Login = () => {
             username: username,
             password: password,
         }).then(response => {
-            console.log(response.data.user._id);
-            console.log(response.data.user);
-            console.log("user: ", response.data);
-            console.log("token", response.data.token);
-            console.log(response.data);
-
+            // console.log("data:", response.data);
+            // console.log("token", response.data.token);
             if (response.status === 200) {
                 console.log("Logged In");
-                localStorage.setItem('userId', response.data.user._id);
                 localStorage.setItem('token', response.data.token);
                 localStorage.setItem('user', JSON.stringify(response.data.user));
-                localStorage.setItem('userType', response.data.userType);
                 history.push("/")
             };
         }).catch(e => {

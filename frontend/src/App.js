@@ -3,7 +3,6 @@ import { Switch, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
-
 import ConsultantList from "./components/ConsultantsList";
 import UpdateConsultant from "./components/UpdateConsultant";
 import Register from "./components/Register";

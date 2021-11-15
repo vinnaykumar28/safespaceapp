@@ -1,4 +1,4 @@
-import React, { Component }  from 'react';
+import React from 'react';
 import { useState, useEffect } from 'react'
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -43,8 +43,8 @@ const ConsultantList = () => {
                             <td>{ consultant._id}</td>
                             <td>
                                 <Link to={`/update/${consultant._id}`} className="button is-small is-info">Edit</Link>
-                                <button onClick={ () => deleteConsultant(consultant._id) } className="button is-small is-danger">Delete</button>
-                            </td>
+                                <td><button onClick={ () => deleteConsultant(consultant._id) } className="button is-small is-danger">Delete</button>
+                                </td></td>
                         </tr>
                     )) }
                      

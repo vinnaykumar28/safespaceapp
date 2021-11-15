@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import { useHistory } from 'react-router';
+import React, { useState } from 'react';
 import axios from "axios";
 
 const Register = () => {
@@ -10,7 +9,6 @@ const Register = () => {
     const [address, setAddress] = useState("");
     const [message, setMessage] = useState("");
 
-    let history = useHistory();
     const saveUser = async (e) => {
         e.preventDefault();
         await axios.post('http://localhost:5000/user/register', {
@@ -21,8 +19,7 @@ const Register = () => {
         }).then(response => {
             console.log(response.data);
             if (response.status === 200) {
-                console.log("User has been registered");
-                if (response.data.status == "success") {
+                if (response.data.status === "success") {
                     setMessage("You have been registered.")
                 }
                 // console.log(response.data.status);
