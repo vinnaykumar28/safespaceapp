@@ -52,15 +52,16 @@ router.get('/all', auth, async (req,res) => {
 
 router.get('/:BookingId', auth, async (req, res) => {
     try{
-    // if(req.user.id === req.params.userId || req.user.username === 'admin'){
-    const findBook = await booking.findById(req.params.BookingId);
+    if(req.user.id === req.params.BookingId || req.user.username === 'admin'){
+    const findBook = await booking.find({bookingBy : req.user.username});
     res.json(findBook);
     }
-    // else{
-    //     res.json({
-    //       'error' : 'forbidden'
-    //     })
-    // }
+     else{
+         res.json({
+         'error' : 'forbidden'
+         })
+    }
+}
     catch (err) {
         res.json(err);
     }
