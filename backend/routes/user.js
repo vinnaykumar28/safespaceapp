@@ -8,8 +8,9 @@ const auth = require('../middleware/auth');
 
 
 router.use(express.json());
-router.get('/all', async (req,res) => {
+router.get('/all', auth, async (req,res) => {
     try {
+      if(req.user.username === 'admin'){
         let {page, size, search} = req.query;
         if(!page){
           page = 1;
@@ -22,13 +23,19 @@ router.get('/all', async (req,res) => {
         const skip = (page - 1) * size;
         const allusers = await user.find().limit(limit).skip(skip);
         res.json(allusers);
+      }
+      else{
+        res.json({
+          'error' : 'forbidden'
+        })
+      }
     } catch (err) {
         res.json(err);
     }
 });
 router.get('/:userId', auth, async (req, res) => {
     try{
-    if(req.user.id === req.params.userId){
+    if(req.user.id === req.params.userId || req.user.username === 'admin'){
 
     
     const findUser = await user.findById(req.params.userId);
@@ -45,6 +52,7 @@ router.get('/:userId', auth, async (req, res) => {
 });
 router.delete('/delete/:userID',auth, async (req,res) => {
     try{
+      if(req.user.username === 'admin'){
         const dUser = await user.remove({
             _id: req.params.userID
         })
@@ -56,6 +64,12 @@ router.delete('/delete/:userID',auth, async (req,res) => {
                 message: nan
             })
         ]
+      }
+      else{
+        res.json({
+          'error': 'forbidden'
+        })
+      }
     } catch (err) {
             res.json(err);
     }
@@ -63,10 +77,17 @@ router.delete('/delete/:userID',auth, async (req,res) => {
 
 router.patch('/update/:userID',auth, async (req,res) => {
     try{
+      if(req.user.username === 'admin'){
         const updateUser = await user.updateOne({
             _id: req.params.userID}, {$set: {username: req.body.username, email: req.body.email, password: req.body.password, address: req.body.address}}
         );
         res.json(updateUser);
+      }
+      else{
+        res.json({
+          'error': 'forbidden'
+        })
+      }
     } catch (err) {
             res.json(err);
     }
