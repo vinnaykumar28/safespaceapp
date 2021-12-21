@@ -21,10 +21,8 @@ const userSchema = new mongoose.Schema({
     },
     password: {
       type: String,
-      select: false,
       require: [true, "A password is a must-have nowadays."],
       //unique: true,
-      trim: true
     },
   });
 

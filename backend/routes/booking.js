@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require("bcrypt");
 const booking = require('../model/Booking');
+const auth = require('../middleware/auth');
+
 
 
 
@@ -15,7 +17,7 @@ router.get('/all', async (req,res) => {
         res.json(err);
     }
 });
-router.get('/:BookingId', async (req, res) => {
+router.get('/:BookingId', auth,async (req, res) => {
     try{
     const findBook = await booking.findById(req.params.BookingId);
     res.json(findBook);
@@ -23,7 +25,7 @@ router.get('/:BookingId', async (req, res) => {
         res.json(err);
     }
 });
-router.delete('/delete/:BookingID', async (req,res) => {
+router.delete('/delete/:BookingID', auth, async (req,res) => {
     try{
         const dBook = await booking.remove({
             _id: req.params.BookingID
@@ -41,7 +43,7 @@ router.delete('/delete/:BookingID', async (req,res) => {
     }
 });
 
-router.patch('/update/:BookingID', async (req,res) => {
+router.patch('/update/:BookingID', auth,  async (req,res) => {
     try{
         const updateBook = await booking.updateOne({
             _id: req.params.BookingID}, {$set: {bookingTime: req.body.bookingTime, patientName: req.body.patientName, consultantName: req.body.consultantName, confirmation: req.body.confirmation}}
@@ -52,7 +54,7 @@ router.patch('/update/:BookingID', async (req,res) => {
     }
 });
 
-router.post('/create', async (req,res) => {
+router.post('/create', auth, async (req,res) => {
     const Book = new booking({
         bookingTime: req.body.bookingTime,
         patientName: req.body.patientName,

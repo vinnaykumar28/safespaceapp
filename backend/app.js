@@ -3,10 +3,7 @@ const mongoose = require('mongoose');
 const body = require('body-parser');
 
 const app = express();
-const cors = require('cors');
-
 app.use(body.json());
-app.use(cors());
 
 const userRouter = require('./routes/user');
 const bookingRouter = require('./routes/booking');
@@ -16,8 +13,11 @@ app.use('/booking', bookingRouter);
 app.use('/consultant', consultantRouter);
 
 app.get('/', (req,res) => {
-    res.send('honmepage');
+    res.send('homepage');
 })
+
+
+
 
 
 mongoose.connect('mongodb+srv://mk:mk123@webdev.bksxx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {useNewUrlParser: true},
