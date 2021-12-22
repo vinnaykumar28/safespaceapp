@@ -1,6 +1,12 @@
 const mongoose = require('mongoose');
 
 const bookingSchema = new mongoose.Schema({
+  bookingBy: {
+    type: String,
+    require: true,
+    //unique: false,
+    trim: true
+  },
     bookingTime: {
       type: String,
       require: true,
