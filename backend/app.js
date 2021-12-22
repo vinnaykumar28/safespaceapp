@@ -3,11 +3,13 @@ const mongoose = require('mongoose');
 const body = require('body-parser');
 
 const app = express();
+const cors = require('cors');
 app.use(body.json());
 
 const userRouter = require('./routes/user');
 const bookingRouter = require('./routes/booking');
 const consultantRouter = require('./routes/consultant');
+app.use(cors());
 app.use('/user', userRouter);
 app.use('/booking', bookingRouter);
 app.use('/consultant', consultantRouter);

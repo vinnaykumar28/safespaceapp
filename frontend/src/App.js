@@ -11,9 +11,10 @@ import AddConsultant from './Component/Consultants/AddConsultant';
 import UpdateConsultant from './Component/Consultants/UpdateConsultant';
 import DisplayUsers from './Component/Users/DisplayUsers';
 import UpdateUsers from './Component/Users/UpdateUsers';
-import MyAppointments from "./Pages/MyAppointments";
 import ContactUs from "./Pages/ContactUs";
 import './App.css';
+import MyBookings from "./Pages/MyBookings";
+import AllBookings from "./Component/AllBookings";
 
 function App() {
   return (
@@ -37,11 +38,14 @@ function App() {
           <Route path="/users/update/:id">
             <UpdateUsers />
           </Route>
-          <Route path="/myappointments">
-            <MyAppointments />
+          <Route path="/mybookings">
+            <MyBookings />
           </Route>
           <Route path="/contactus">
             <ContactUs />
+          </Route>
+          <Route path="/ManageBookings">
+            <AllBookings />
           </Route>
 
           <Route component={NoMatch} />

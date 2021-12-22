@@ -45,6 +45,11 @@ const Navbar = (props) => {
                                     </Link>
                                 </li>
                                 <li class="nav-item" role="presentation">
+                                    <Link to={"/ManageBookings"} className="nav-link">
+                                        Manage Bookings
+                                    </Link>
+                                </li>
+                                <li class="nav-item" role="presentation">
                                     <a class="btn" role="presentation" onClick={logout}>
                                         Logout
                                     </a>
@@ -85,14 +90,14 @@ const Navbar = (props) => {
                                     </Link>
                                 </li>
                                 <li class="nav-item" role="presentation">
-                                    <Link to={"/myappointments"} className="nav-link">
+                                    <Link to={"/mybookings"} className="nav-link">
                                         My Appointments
                                     </Link>
                                 </li>
                                 <li class="nav-item" role="presentation">
-                                    <Link to={"/profile"} className="nav-link">
-                                        Profile
-                                    </Link>
+                                    <a class="btn" role="button" onClick={logout}>
+                                        Logout
+                                    </a>
                                 </li>
                                 <li class="dropdown">
                                     <a
@@ -113,9 +118,7 @@ const Navbar = (props) => {
                                         <a class="dropdown-item" role="presentation" href="#">
                                             Help
                                         </a>
-                                        <a class="dropdown-item" role="presentation" onClick={logout}>
-                                            Logout
-                                        </a>
+
                                     </div>
                                 </li>
                             </ul>

@@ -10,7 +10,7 @@ function auth(req, res, next) {
         if (err) res.status(403).json("Token is not valid!");
         //res.status(200).send(user);
         req.user = user;
-        console.log(user.id);
+        console.log("this" + user.id);
         next();
       });
       

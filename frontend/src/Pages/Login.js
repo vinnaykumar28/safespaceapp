@@ -28,6 +28,7 @@ const Login = () => {
         localStorage.setItem('accessToken', response.data.token);
         localStorage.setItem('user', username);
         localStorage.setItem('loggedIn', "1");
+        localStorage.setItem('userId',response.data.id);
         if (localStorage.getItem('accessToken')) history.push('/');
       } else {
         setMessage(response.message);

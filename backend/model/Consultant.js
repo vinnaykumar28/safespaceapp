@@ -15,16 +15,15 @@ const consultantSchema = new mongoose.Schema({
     },
     speciality: {
       type: String,
-      require: false,
+      require: true,
       //unique: true,
       trim: true
     },
     workinghours: {
       type: String,
       select: false,
-      require: false,
-      //unique: true,
-      trim: true
+      require: true,
+      //unique: true
     },
   });
 

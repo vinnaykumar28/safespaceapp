@@ -1,0 +1,18 @@
+.headerSize {
+  height: 790px;
+}
+.foot {
+  background-color: rgb(20, 74, 129);
+}
+.footdcark{
+    background-color:rgb(20,74,129);
+}
+.slide1{
+  background-image:url(../img/qw.jpeg);
+}
+.slide2{
+  background-image:url(../img/fda.jpg);
+}
+.slide3{
+  background-image:url(../img/fd.jpg);
+}

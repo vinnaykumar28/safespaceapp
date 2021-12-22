@@ -51,7 +51,7 @@ const ConsultantList = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {consultants.map((consultant, id) => (
+                    {consultants.map((consultant, _id) => (
                         <tr key={consultants.id}>
                             <td>{consultant.name}</td>
                             <td>{consultant.speciality}</td>
